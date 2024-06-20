@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const resetBtn = document.getElementById("resetBtn");
   const searchBtn = document.getElementById("searchBtn");
+  const divResult = document.getElementById("result");
 
   // Clear input function
   function clearInput() {
-    const divResult = document.getElementById("result");
     divResult.innerHTML = "";
     searchInput.value = "";
   }
@@ -20,10 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function search(event) {
     event.preventDefault();
     const input = searchInput.value.toLowerCase();
-    const divResult = document.getElementById("result");
     divResult.innerHTML = "";
 
-    fetch("../data/travel_recommendation_api.json")
+    fetch("./data/travel_recommendation_api.json") // Adjusted relative path based on index.html location
       .then((response) => response.json())
       .then((data) => {
         let filteredData = [];
